@@ -2,7 +2,7 @@ import telebot
 import random
 from xuylist import xuyanswers_list, pizdaanswers_list, kuanswers_list, kurequests_list, stickerrequest_list,\
     stickeranswer_list, lubovreques_list, anekanswer_list, anekrequest_list, questionrequestlist, xuyrequest_list,\
-    pizdarequests_list
+    pizdarequests_list, memes_list
 
 bot = telebot.TeleBot("5778875150:AAFIsTxbIh1g35y7JbmLshUWfsisIxd3dSM")
 @bot.message_handler(commands = ['start'])
@@ -11,6 +11,13 @@ def send_welcome(message):
 @bot.message_handler(commands = ['help'])
 def help(message):
     bot.send_message(message.chat.id, "тебе уже ничего не поможет")
+
+@bot.message_handler(commands = ['meme'])
+def memes(message):
+    choiceofniggers = ["1", "2"]
+    rNum = random.choice(choiceofniggers)
+    photo = open(memes_list + rNum + ".jpg", "rb")
+    bot.send_photo(message.chat.id, photo)
 
 @bot.message_handler(content_types=['photo'])
 def userphoto(message):
